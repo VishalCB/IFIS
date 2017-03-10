@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+     
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   
+
+
+      <link rel="stylesheet" href="css/style.css"/>
+       <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript"     src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+   <script type="text/javascript">
+       $(window).load(function () {
+           $('#maintenanceInfo').modal('show');
+       });
+ </script>
+   <script type = "text/javascript" >
+       function disableBackButton() {
+           window.history.forward();
+       }
+       setTimeout("disableBackButton()", 0);
+</script>
+
+ <script type="text/javascript">
+     function login() {
+         window.location = "Login.htm";
+     }; 
+ </script>
+
+</head>
+<body>
+  <div>
+    <!-- Trigger the modal with a Link -->
+  <!--  <a href="#" data-toggle="modal" data-target="#maintenanceInfo">Logout</a>-->
+
+    <!-- Modal -->
+    <div id="maintenanceInfo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header header-color">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h4 class="modal-title">Logout</h4>
+    </div>
+    <div class="modal-body">
+
+    <p>Thanking you for banking with us. For security reasons please clear your cache after each session.</p>
+    <table class="table table-striped">
+    <thead class="tableheader-color">
+      <tr>
+        <th>Login</th>
+        <th>Logout</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td>09 March 2017 05:15 PM</td>
+        <td>09 March 2017 05:45 PM</td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+  <table class="table table-striped">
+    <thead class="tableheader-color">
+      <tr>
+        <th>DateTime</th>
+        <th>Access Type</th>
+        <th>Event</th>
+      </tr>
+    </thead>  
+    <tbody>
+    <tr> 
+    <td> Today</td>
+        <td>Browser</td>
+        <td> Changed password</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>Browser</td>
+        <td> Requested for query </td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>Browser</td>
+        <td> Printed transaction details </td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>Browser</td>
+        <td> Updated profile</td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" style="background-color:#cbd114;" data-dismiss="modal" onclick="login()">Close</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

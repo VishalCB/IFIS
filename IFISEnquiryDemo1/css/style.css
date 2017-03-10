@@ -1,0 +1,94 @@
+﻿body {
+  font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+
+ background: linear-gradient(to left, #CBD114,SILVER);
+}
+
+.wrapper {        
+  margin-top : 80px;
+  margin-bottom: 80px;
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.1); 
+}
+
+input[type=text], input[type=password], input[type=number] 
+{
+font-family: Arial, Candara, Segoe, 'Segoe UI', Optima, sans-serif;
+width: 100%;
+height: 40px;
+padding: 5px;
+margin-bottom: 25px;
+margin-top: 5px;
+border: 2px solid #ccc;
+color: #4f4f4f;
+font-size: 14px;
+border-radius: 5px;
+}
+
+th
+{
+font-family: Arial, Candara, Segoe, 'Segoe UI', Optima, sans-serif;
+font-size: 14px;
+}
+
+input[type=button]{
+font-size: 17px;
+font-family: Arial, Candara, Segoe, 'Segoe UI', Optima, sans-serif;
+background: linear-gradient(#ffbc00 5%, #ffdd7f 100%);
+border: 1px solid #e5a900;
+color: #4E4D4B;
+font-weight: bold;
+cursor: pointer;
+width: 100%;
+border-radius: 5px;
+padding: 10px 0;
+outline:none;
+}
+
+label{
+font-family: Arial, Candara, Segoe, 'Segoe UI', Optima, sans-serif;
+font-size: 17px;
+font-style: normal;
+font-variant: normal;
+font-weight: bold;
+line-height: 26.4px;
+}
+
+span
+{
+color: #464646;
+font-family: Arial, Candara, Segoe, 'Segoe UI', Optima, sans-serif;
+text-shadow: 0 1px 0 #fff;
+font-size: 17px;
+font-weight: bold;
+}
+
+h2 {
+font-family: Arial, Candara, Segoe, 'Segoe UI', Optima, sans-serif;
+font-size: 21px;
+font-style: normal;
+font-variant: normal;
+font-weight: 500;
+line-height: 26.4px;
+}
+
+.focused{
+  border: solid 1px green;
+}
+
+.header-color
+{
+        background: #cbd114;
+}
+
+.tableheader-color
+{
+        background: #ccc;
+}

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+          <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript"     src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+   <script type="text/javascript">
+       $(window).load(function () {
+           $('#myModal').modal('show');
+       });
+ </script>
+   <script type = "text/javascript" >
+       function disableBackButton() {
+           window.history.forward();
+       }
+       setTimeout("disableBackButton()", 0);
+</script>
+
+</head>
+
+<body>
+  <!-- Modal -->
+
+  <div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       <div class="modal-header">
+       
+        <h4 class="modal-title">Login Session</h4>
+      </div>
+      <div class="modal-body">
+      <div class=" grey2 ">
+<center>
+<h4 >Current Login : 3/9/2017 11:58:12 AM</h4>
+<h4 >  Last Login  : 3/6/2017 3:58:12 PM </h4>
+<h4 style="color:red;">Your Login password expires in 14 days (valid upto 23/03/2017)</h4>
+
+</center>
+
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="location.href='Home.htm'" class="btn btn-default" data-dismiss="modal">OK</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</body>
+</html>
+

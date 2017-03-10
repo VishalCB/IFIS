@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <title></title>
+      <meta charset="utf-8">
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+   
+    <link href="css/timecheck.css" rel="stylesheet" type="text/css" />
+    <link href="css/Custom.css" rel="stylesheet" type="text/css" />
+
+    
+<!-- <script>
+     function myfunction(id) {
+         var x = document.getelementbyid(id);
+         if (x.classname.indexof("w3-show") == -1) {
+             x.classname += " w3-show";
+         } else {
+             x.classname = x.classname.replace(" w3-show", "");
+         $('#accord').hide();
+       
+         }
+     }
+</script>-->
+
+
+
+
+ <script type="text/javascript">
+     $(document).ready(function () {
+         $(".hov").hover(function () {
+             $(this).css("border-bottom", " #CBD114 solid 2px");
+         }, function () {
+             $(this).css("border-bottom", "none");
+         });
+     });
+</script>
+
+
+</head>
+
+<body>
+    <form id="form1" runat="server">
+    <div>
+
+
+
+<div class="example2">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button><img src="images/ifis_logo.png" width="200" height="90" />
+      </div>
+      <div id="navbar2" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="act"><a href="#">Home</a></li>
+          <li class="dropdown">
+          <a class="dropdown-toggle hov" data-toggle="dropdown" href="#">Query <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Client info query</a></li>
+            <li><a href="#">Order/Trade query</a></li>
+          </ul>
+        </li>
+          <li><a class="hov" href="#">reports</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle hov" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"><span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+             <li class="dropdown-header"><br />Hey Steve!</li>
+              <li class="btn"><a href="#">View Profile</a></li>
+              <li class="btn"><a href="#">User settings</a></li>
+              <li class="divider"></li>
+              <li class="btn"><a href="Logout.htm"><span class="glyphicon glyphicon-log-out"> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+</div>
+
+
+
+
+
+<!--<div class="w3-container">
+     
+<button onclick="myFunction('Demo1');return false" class="w3-button w3-block w3-center-align" id="accord">Login Session</button>
+<div id="Demo1" class="w3-container w3-hide">
+     <div class=" grey2 ">
+<center>
+<h4 >Current Login : <asp:Label ID="CurrentTime" runat="server" Text=""></asp:Label> </h4>
+<h4 >  Last Login  : 3/6/2017 3:58:12 PM </h4>
+<h4 style="color:red;">Your Login password expires in 14 days (valid upto 23/03/2017)</h4>
+
+</center>
+
+</div>
+</div>
+
+</div>
+-->
+
+<!--This div is to know the details about the company-->
+
+<div class="container">
+<div class="jumbotron" >
+<center>
+<h2>Welcome to IFIS Enquiry system</h2>
+<br />
+<p class="italic">IFIS Asia Holdings Pte Ltd is a leading IT provider of Asian Financial Capital Market solutions in Asia, offering products and services in the areas of real-time data dissemination, enterprise application integration and electronic trading, order routing and FIX service bureau services. We are headquartered in Singapore, with a growing presence in Manila, Philippines.</p>
+</center>
+</div>
+</div>
+
+
+<div class="row">
+
+
+<div class="col-sm-6 homeAnnounce" id="div1">
+<center>
+<h3 style="font-weight:bold;" ><span class="glyphicon glyphicon-cloud-upload" ></span>  Updates</h3>
+<div class="container">
+<div class="row">
+<div class="col-sm-1">
+<!-- the icon as a time element -->
+<time datetime="2014-09-20" class="icon">
+  <strong>Mar</strong>
+  <span>08</span>
+</time>
+</div>
+<div class="col-sm-5">
+<h4 style="margin-top: 39px;" class="list-group-item">Change password page added</h4>
+</div>
+
+</div>
+</div>
+
+
+
+
+<div class="container">
+<div class="row">
+<div class="col-sm-1">
+<!-- the icon as a time element -->
+<time datetime="2014-09-20" class="icon">
+  <strong>Mar</strong>
+  <span>05</span>
+</time>
+</div>
+<div class="col-sm-5">
+<h4 style="margin-top: 39px;" class="list-group-item">Trade query page updated</h4>
+</div>
+
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+<div class="col-sm-1">
+<!-- the icon as a time element -->
+<time datetime="2014-09-20" class="icon">
+  <strong>Feb</strong>
+  <span>28</span>
+</time>
+</div>
+<div class="col-sm-5">
+<h4 style="margin-top: 39px;" class="list-group-item">Help page added</h4>
+</div>
+
+</div>
+</div>
+</center>
+</div>
+
+
+
+
+
+   <!--This div is used to show the news and announcement at the bottom-->
+<div class="col-sm-6 homeAnnounce" id="div2">
+<center>
+<h3 style="font-weight:bold;"  ><span class="glyphicon glyphicon-bullhorn" ></span> Announcement</h3>
+<div class="container">
+<div class="row">
+<div class="col-sm-1">
+<!-- the icon as a time element -->
+<time datetime="2014-09-20" class="icon">
+  <strong>Mar</strong>
+  <span>31</span>
+</time>
+</div>
+<div class="col-sm-5">
+<h4 style="margin-top: 39px;" class="list-group-item">Server Maintanance from 9AM-5PM</h4>
+</div>
+
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+<div class="col-sm-1">
+<!-- the icon as a time element -->
+<time datetime="2014-09-20" class="icon">
+  <strong>Mar</strong>
+  <span>15</span>
+</time>
+</div>
+<div class="col-sm-5">
+<h4 style="margin-top: 39px;" class="list-group-item">Upcoming terms and conditions change</h4>
+</div>
+
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+<div class="col-sm-1">
+<!-- the icon as a time element -->
+<time datetime="2014-09-20" class="icon">
+  <strong>Mar</strong>
+  <span>10</span>
+</time>
+</div>
+<div class="col-sm-5">
+<h4 style="margin-top: 39px;" class="list-group-item">Scam email circulating</h4>
+</div>
+
+</div>
+</div>
+</center>
+</div>
+</div>
+
+<footer class="footer">
+<div class="row">
+<div class="col-sm-4">
+
+<h4 style="text-align:left;margin-left:140px;">LINKS</h4>
+<ul style="margin-left=130px;padding-left:130px" class="footlink">
+  <li><a href="#home"><span class="	glyphicon glyphicon-menu-right foota">Home</a></li>
+  <li><a href="#news"><span class="	glyphicon glyphicon-menu-right foota">News</a></li>
+  <li><a href="#contact"><span class="glyphicon glyphicon-menu-right foota">Contact</a></li>
+  <li><a href="#about"><span class="glyphicon glyphicon-menu-right foota">About</a></li>
+    
+</ul>
+</div>
+<div class="col-sm-4">
+<h4 style="text-align:left;margin-left:40px;font-size:20px;">CONTACT US</h4>
+
+<ul   class="footlink">
+  <li><a href="#home"><span class="	glyphicon glyphicon-earphone foota"> (65)48258613</a></li>
+  <li><a href="#news"><span class="	glyphicon glyphicon-earphone foota"> (65)97265566</a></li>
+  <li><a href="#contact"><span class="glyphicon glyphicon-envelope foota"> Contact@ifis.com.sg</a></li>
+  <li><a href="#about"><span class="glyphicon glyphicon-info-sign foota"> Help&Support</a></li>
+ 
+</ul>
+
+</div>
+<div class="col-sm-4">
+<h4 style="text-align:left;margin-left:40px;font-size:20px;">ABOUT US</h4>
+<p class="foota" style="text-align:justify;">IFIS Asia Holdings Pte Ltd is a leading IT provider of Asian Financial Capital Market solutions in Asia, offering products and services in the areas of real-time data dissemination, enterprise application integration and electronic trading, order routing and FIX service bureau services.</p>
+</div>
+</div>
+</footer>
+<footer class="bottom">
+<p class="cFooter2 text-center inner-margin"><span class="	glyphicon glyphicon-copyright-mark"></span> Copyright 2016 All Rights Reserved | <a href="#top">Top</a> | <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></p>
+</footer>
+
+    </form>
+</body>
+</html>

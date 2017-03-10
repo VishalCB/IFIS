@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head id="Head1" runat="server">
+    <title>Login</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="css/style.css"/>
+  
+      <script type="text/javascript">
+          var flag = 0;
+          function showDiv() {
+              var username = document.getElementById('uname');
+              var password = document.getElementById('pswd');
+              var token = document.getElementById('token');
+              var error = document.getElementById('error-message');
+              if (username.value != "Admin") {
+                  error.style.display = "block";
+                  username.style.borderColor = "red";
+              }
+              else if (username.value === "Admin" && flag === 0) {
+                  document.getElementById('passwordDiv').style.display = "block";
+                  document.getElementById('userNameDiv').style.display = "none";
+                  document.getElementById('loginheader').style.display = "none";
+                  document.getElementById("welcome").innerHTML = "Good to see you, " + username.value + "!!";
+                  document.getElementById('notYou').style.display = "block";
+                  error.style.display = "none";
+                  flag++;
+              }
+              else if (username.value === "Admin" && password.value != "admin" && flag === 1) {
+                  error.style.display = "block";
+                  password.style.borderColor = "red";
+              }
+              else if (username.value === "Admin" && token.value != "1234" && flag === 1) {
+                  error.style.display = "block";
+                  token.style.borderColor = "red";
+              }
+              else if (username.value === "Admin" && password.value === "admin" && token.value === "1234" && flag === 1) {
+                  window.location = "LoginSession.htm";
+              }
+              else {
+                  error.style.display = "block";
+              }
+          }      
+    </script>
+
+    <script type="text/javascript">
+        function removeAlert() {
+            var username = document.getElementById("uname");
+            var password = document.getElementById("pswd");
+            var token = document.getElementById("token");
+            var error = document.getElementById("error-message");
+            error.style.display = "none";
+            username.style.borderColor = "#ccc";
+            password.style.borderColor = "#ccc";
+            token.style.borderColor = "#ccc";
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#uname").keyup(function (event) {
+                if (event.keyCode == 13) {
+                    showDiv();
+                }
+            });
+        });
+    </script>
+
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $("#pswd").keyup(function (event) {
+              if (event.keyCode == 13) {
+                  showDiv();
+              }
+          });
+      });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.page-alert').hide();
+            //Show alert
+            $('button[data-toggle="page-alert"]').click(function (e) {
+                e.preventDefault();
+                var id = $(this).attr('data-toggle-id');
+                var alert = $('#alert-' + id);
+                var timeOut;
+                alert.appendTo('.page-alerts');
+                alert.slideDown();
+
+                //Is autoclosing alert
+                var delay = $(this).attr('data-delay');
+                if (delay != undefined) {
+                    delay = parseInt(delay);
+                    clearTimeout(timeOut);
+                    timeOut = window.setTimeout(function () {
+                        alert.slideUp();
+                    }, delay);
+                }
+            });
+
+            //Close alert
+            $('.page-alert .close').click(function (e) {
+                e.preventDefault();
+                $(this).closest('.page-alert').slideUp();
+            });
+
+            //Clear all
+            $('.clear-page-alerts').click(function (e) {
+                e.preventDefault();
+                $('.page-alert').slideUp();
+            });
+        });
+    </script>
+  
+</head>
+
+<body>
+    <div id="headerLogo">
+    <div style="background-color:White;">
+    <img src="images/ifis_logo.png"  id="Img1" width="200" height="70" alt="logo"/>
+    </div>
+    </div>
+
+<div class="container">
+    <div class="alert alert-danger page-alert" id="error-message">
+    <button type="button" class="close" onclick="removeAlert()"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+    <strong>Incorrect credentials!!</strong> Please enter correct user details.
+    </div>
+    <br/>
+    <br />
+    <br />
+
+    <div class="row">
+    <div class="col-md-6 col-md-offset-6">
+
+    <form name="loginForm" class="form-horizontal form-signin" action="">  
+    <div align="center">
+    <div id="loginheader" style="display:block;">
+    <h2>Log on to IFIS Enquiry System</h2>
+    </div>
+    <span id = "welcome"></span>
+    <div id="notYou" style="display:none;">
+    <a href="Login.htm">Not You?</a>
+    </div>
+    </div>
+    <br/>
+    <br />
+    <br />
+    <div id="userNameDiv" style="display:block;">
+    <div class="form-group"> <!-- Username field -->
+    <label class="control-label col-md-4" for="uname">Username:</label>
+    <div class="col-md-8">
+    <input class="form-control" id="uname" name="uname" type="text" placeholder="Enter username" onselect="removeAlert()"/>
+    </div>        
+        </div>
+    </div>
+    <div id="passwordDiv" style="display:none;" class="answer_list">
+    <div class="form-group" > <!-- Password field -->
+        <label class="control-label col-md-4"" for="pswd">Password:</label>
+    <div class="col-md-8">
+        <input class="form-control" id="pswd" name="pswd" type="password" placeholder="Enter password" onselect="removeAlert()" onblur="removeAlert()"/>
+    </div>
+        </div>
+    <div class="form-group" > <!-- TokenID field -->
+        <label class="control-label col-md-4"" for="token">Token ID:</label>
+    <div class="col-md-8">
+        <input class="form-control" id="token" name="token" type="number" placeholder="Enter token ID" onselect="removeAlert()" />
+    </div>
+        </div>
+    </div>
+        <div class="form-group">
+        <input type="button" name="answer" value="Submit" onclick="showDiv()" />
+        </div>
+    <div>
+    <a href="#">Forgot password?</a>
+    </div>
+    <div>
+    <!-- Trigger the modal with a Link -->
+    <a href="#" data-toggle="modal" data-target="#maintenanceInfo">Having trouble logging in?</a>
+
+    <!-- Modal -->
+    <div id="maintenanceInfo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header header-color">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <div>
+    <h4 class="modal-title">Having trouble logging in?</h4>
+    </div>
+    </div>
+    <div class="modal-body">
+    <div>
+    <h4>Contact Us</h4>
+    <p>For Personal Banking customers, please call 6363 3333 (24-hour hotline) or if calling from overseas, please dial +65 6363 3333. </p>
+    <p> For Premier Banking customers, please call 1800-PREMIER (773 6437) or, if calling from overseas, please dial +65 6530 5930.
+    </p>
+    <p> 
+    For Plus! customers, please call 6820 2020 or, if calling from overseas, please dial +65 6820 2020.
+   </p>
+    </div>
+    <hr />
+    <div>
+    <h4>Scheduled Maintenance</h4>
+   
+    <p>We are constantly upgrading our systems to bring you a more pleasant banking experience. During the mentioned period of scheduled maintenance, some of the services will not be available:</p>
+    <table class="table table-striped">
+    <thead class="tableheader-color">
+      <tr>
+        <th>Date</th>
+        <th>Maintenance Period</th>
+        <th>Services</th>
+        <th>Services under Maintenance</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td>Every Sunday</td>
+        <td>0400hrs to 0700hrs</td>
+        <td>Cards And Cashline application</td>
+        <td>- Document Upload</td>
+      </tr>
+      <tr>
+        <td>05 Mar 2017</td>
+        <td>0200hrs to 0400hrs</td>
+        <td>Secured mail box</td>
+        <td>
+        <table>
+        <tr><td>- Personal Inbox</td></tr>
+        <tr><td>- Compose</td></tr>
+        <tr><td>- Sent Mail</td></tr>
+        </table>
+        </td>
+      </tr>
+      <tr>
+        <td>05 Mar 2017</td>
+        <td>0200hrs to 0400hrs</td>
+        <td>Vickers Application</td>
+        <td>- Vickers account opening</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default header-color" data-dismiss="modal">Close</button>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </form>  
+    </div>
+    </div>
+    </div>
+</body>
+</html>
