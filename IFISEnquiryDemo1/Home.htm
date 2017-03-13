@@ -16,6 +16,8 @@
     <link href="css/timecheck.css" rel="stylesheet" type="text/css" />
     <link href="css/Custom.css" rel="stylesheet" type="text/css" />
 
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+
     
 <!-- <script>
      function myfunction(id) {
@@ -30,18 +32,17 @@
      }
 </script>-->
 
+<!--   e.preventDefault();-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.nav > li').click(function (e) {      
+            $('ul.nav > li').removeClass('active');
+            $(this).addClass('active');
+        });
 
-
-
- <script type="text/javascript">
-     $(document).ready(function () {
-         $(".hov").hover(function () {
-             $(this).css("border-bottom", " #CBD114 solid 2px");
-         }, function () {
-             $(this).css("border-bottom", "none");
-         });
-     });
+    });
 </script>
+
 
 
 </head>
@@ -49,44 +50,13 @@
 <body>
     <form id="form1" runat="server">
     <div>
+    <div w3-include-html="Header.htm"></div> 
+    
+<script>
+    w3IncludeHTML();
+</script>
 
 
-
-<div class="example2">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button><img src="images/ifis_logo.png" width="200" height="90" />
-      </div>
-      <div id="navbar2" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="act"><a href="#">Home</a></li>
-          <li class="dropdown">
-          <a class="dropdown-toggle hov" data-toggle="dropdown" href="#">Query <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Client info query</a></li>
-            <li><a href="#">Order/Trade query</a></li>
-          </ul>
-        </li>
-          <li><a class="hov" href="#">reports</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle hov" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"><span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-             <li class="dropdown-header"><br />Hey Steve!</li>
-              <li class="btn"><a href="#">View Profile</a></li>
-              <li class="btn"><a href="#">User settings</a></li>
-              <li class="divider"></li>
-              <li class="btn"><a href="Logout.htm"><span class="glyphicon glyphicon-log-out"> Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
     </div>
     <!--/.container-fluid -->
   </nav>

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#home").removeClass("active");
+            $("#query").addClass("active");
+        }); 
+    </script>
+ 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.nav > li').click(function (e) {
+            $('ul.nav > li').removeClass('active');
+            $(this).addClass('active');
+        }); 
+
+    });
+</script>
+</head>
+
+<body>
+<div w3-include-html="Header.htm"></div> 
+
+<script>
+    w3IncludeHTML();
+</script>
+ <div>
+
+<!--This div is to know the details about the company-->
+
+<div class="container">
+<div class="jumbotron" >
+<center>
+<h2>Welcome to IFIS Enquiry system</h2>
+<br />
+<p class="italic">IFIS Asia Holdings Pte Ltd is a leading IT provider of Asian Financial Capital Market solutions in Asia, offering products and services in the areas of real-time data dissemination, enterprise application integration and electronic trading, order routing and FIX service bureau services. We are headquartered in Singapore, with a growing presence in Manila, Philippines.</p>
+</center>
+</div>
+</div>
+
+ 
+ </div>
+</body>
+</html>
