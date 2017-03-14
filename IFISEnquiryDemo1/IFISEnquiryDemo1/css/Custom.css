@@ -1,0 +1,179 @@
+﻿body {
+}
+/**********************************
+Responsive navbar-brand image CSS
+- Remove navbar-brand padding for firefox bug workaround
+- add 100% height and width auto ... similar to how bootstrap img-responsive class works
+***********************************/
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+/*************************
+EXAMPLES 2-7 BELOW 
+**************************/
+
+/* EXAMPLE 2 (larger logo) - simply adjust top bottom padding to make logo larger */
+
+.example2 .navbar-brand>img {
+  padding: 7px 15px;
+}
+
+
+
+/* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
+.navbar-alignit .navbar-header {
+	  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  height: 50px;
+}
+.navbar-alignit .navbar-brand {
+	top: 50%;
+	display: block;
+	position: relative;
+	height: auto;
+	transform: translate(0,-50%);
+	margin-right: 15px;
+  margin-left: 15px;
+}
+
+
+
+
+
+.navbar-nav>li>.dropdown-menu {
+	z-index: 9999;
+}
+
+body {
+  font-family: "Lato";
+  background-color:White;
+}
+
+  .navbar-default {
+    background-color: white;
+
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #DCDCDC;
+    background-image: none;
+}
+.dropdown-toggle:active, .open .dropdown-toggle {background:#FFF !important; color:#000 !important;}
+.navbar-nav>li {
+    font: 400 .88rem 'Open Sans', 'Sans-serif';
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0 20px 0 0;
+    margin-left:30px;
+    font-size:18px;
+    transition: background 0.7s linear;
+}
+.navbar-nav {
+    padding: 30px 0 0 0;
+    margin: 0 auto;
+    min-height: 100px;
+}
+.example2 {
+    padding: 15px;
+    margin: 0 auto;
+}
+p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+}
+
+
+.jumbotron {
+    background-color:transparent !important; 
+     border: 1px solid grey;
+}
+
+h2 { color: #cbd114;font-style: italic; font-family: 'Raleway',sans-serif; font-size: 4vw; font-weight: 600; line-height: 72px; margin: 0 0 24px; text-align: center;  }
+
+.navbar-default .navbar-nav>.active> a, 
+.navbar-default .navbar-nav>.active> a:focus, 
+.navbar-default .navbar-nav>.active> a:hover {
+  background-color:transparent;
+   border-bottom: #CBD114 solid 2px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color:transparent;
+   border-bottom: #CBD114 solid 2px;
+}
+
+p.italic {
+    font-style: italic;
+    
+}
+
+.footer
+{
+    background-color:#f3f3f3;
+}
+
+.footlink{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f3f3f3;
+}
+.foota {
+    display: block;
+    color: #000;
+    padding: 16px 32px;
+    text-decoration: none;
+    font-size:20px;
+}
+
+
+.cFooter2{    background: #e2e2e2;
+    font: 0.85rem 'Open Sans', sans-serif;
+    color: #828083;
+    padding: 15px 0 10px 0;
+    margin: 0 auto;}
+    
+    
+    .inner-margin {
+    padding: 15px;
+    margin: 0 auto;
+}
+.text-center {
+    text-align: center;
+}
+
+
+.boxed {
+  border: 1px solid grey;
+}
+.grey2 {
+    color: #828282;
+}
+.homeAnnounce
+{
+     background-color:white;
+    /*  #EDEDED  */  
+}
+#div2 {
+    float: right;
+}
+#div1 {
+    float: left;
+}
+@media (max-width: 600px) {
+    #div2,#div1 {
+        float: none;
+}
+
+
+

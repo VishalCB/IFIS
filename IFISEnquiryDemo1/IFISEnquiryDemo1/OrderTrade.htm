@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   
+     <title></title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+    <link href="css/ordertable.css" rel="stylesheet" type="text/css" />
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+
+
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $("#dt1").datepicker({
+              dateFormat: "dd-mm-yy",
+              onSelect: function () {
+                  var dt2 = $('#dt2');
+                  var startDate = $(this).datepicker('getDate');
+                  //add 90 days to selected date
+                  startDate.setDate(startDate.getDate() + 90);
+                  var minDate = $(this).datepicker('getDate');
+                  //minDate of dt2 datepicker = dt1 selected day
+                 
+                  //sets dt2 maxDate to the last day of 90 days window
+                  dt2.datepicker('option', 'maxDate', startDate);
+                  dt2.datepicker('setDate', 'maxDate');
+                  //first day which can be selected in dt2 is selected date in dt1
+                  dt2.datepicker('option', 'minDate', minDate);
+         
+              }
+          });
+          $('#dt2').datepicker({
+              dateFormat: "dd-mm-yy"
+          });
+      });
+  </script>
+  
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#home").removeClass("active");
+            $("#query").addClass("active");
+        }); 
+    </script>
+ 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.nav > li').click(function (e) {
+            $('ul.nav > li').removeClass('active');
+            $(this).addClass('active');
+        }); 
+
+    });
+</script>
+</head>
+<body>
+<div w3-include-html="Header.htm"></div> 
+
+<script>
+    w3IncludeHTML();
+</script>
+
+<div style="border-style:solid;">
+<div class="row">
+<div class="col-sm-2">
+
+<h5>Account No.</h5>
+<input type="text" id="accountid" onkeyup="clientFunction()"  title="Type in a name">
+
+<h5>Instrument</h5>
+<input type="text" id="instrumentid" onkeyup="clientFunction()"  title="Type in a name">
+
+</div>
+<div class="col-sm-2">
+
+<h5>Client ID</h5>
+<select id="clientid" onchange="clientFunction()">
+  <option value="">Select</option>
+  <option value="DB_SG" >DBS_SG</option>
+  <option value="AVOL">AVOL</option>
+  <option value="POSB">POSB</option>
+    <option value="OCBC">OCBC</option>
+</select>
+
+<h5>Time in Force</h5>
+<select id="timeforce" onchange="clientFunction()">
+  <option value="">Select</option>
+  <option value="DAY" >Day order</option>
+  <option value="GTC">Good Till Cancel</option>
+  <option value="GTD">Good Till Date</option>
+</select>
+
+<h5>Order Type</h5>
+<select id="ordertype" onchange="clientFunction()">
+  <option value="">Select</option>
+  <option value="LIM" >Limited Order</option>
+  <option value="MKT">Market Order</option>
+</select>
+</div>
+
+
+<div class="col-sm-3">
+<h5>Exchange</h5>
+<select id="exchange" onchange="clientFunction()">
+  <option value="">Select</option>
+  <option value="KL" >Bursa Stock Exchange(BSE)</option>
+  <option value="BK">Stock Exchange of Thailand (SET)</option>
+  <option value="SI">Singapore Exchange (SGX)</option>
+    <option value="AS" >Australian Stock Exchange (ASX)</option>
+  <option value="ID">Indonesian Stock Exchange (IDX)</option>
+  <option value="HK">Hong Kong Stock Exchange (HSE)</option>
+</select>
+
+<h5>Side</h5>
+<select id="side" onchange="clientFunction()">
+  <option value="">Select</option>
+  <option value="BUY" >BUY</option>
+  <option value="SELL">SELL</option>
+</select>
+</div>
+
+<div class="col-sm-2">
+<h5>Order Status</h5>
+<input type="checkbox" id="expired" value="EXP" onclick="clientFunction()" > Expired <br />
+<input type="checkbox" id="filled" value="FILL" onclick="clientFunction()" > Filled <br />
+<input type="checkbox" id="rejected" value="RJCT" onclick="clientFunction()" > Rejected <br />
+<input type="checkbox" id="cancelled" value="CXL" onclick="clientFunction()" > Cancelled <br />
+</div>
+
+<div class="col-sm-3">
+
+<p>From Date: <input type="text" id="dt1"></p>
+<p>To Date: <input type="text" id="dt2"></p>
+<input type="button" onclick="clientFunction()" value="filter" />
+</div>
+
+</div>
+</div>
+<div class="table-responsive">
+<table class="table" id="myTable">
+  <tr class="header">
+    <th >Account</th>
+    <th >Trans ID</th>
+        <th >Deal Reference ID</th>
+            <th >Client ID</th>
+                <th >Trading Account#</th>
+                    <th >Order Owner</th>
+                      <th>Order Type</th>
+                        <th >Order Handler</th>
+                            <th >Status</th>
+                                    <th >Trace ID</th>
+                                        <th >Instrument</th>
+                                            <th >Instrument Code</th>
+                                              <th>Time in Force</th>
+                                                  <th>Exchange</th>
+                                                  <th>Side</th>
+                                                  <th>date</th>
+  </tr>
+  <tr>
+    <td>01</td>
+    <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>LIM</td>
+    <td>System</td>
+    <td>EXP</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>DAY</td>
+    <td>KL</td>
+    <td>BUY</td>
+      <td>11-11-2016</td>
+  </tr>
+  <tr>
+     <td>A1002</td>
+       <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>LIM</td>
+    <td>System</td>
+    <td>CXL</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>DAY</td>
+    <td>BK</td>
+    <td>BUY</td>
+      <td>11-10-2016</td>
+  </tr>
+  <tr>
+      <td>A1002</td>
+        <td>3201</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>RJCT</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>GTC</td>
+    <td>SI</td>
+    <td>BUY</td>
+      <td>11-09-2016</td>
+  </tr>
+  <tr>
+   <td>A1003</td>
+     <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>AVOL</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>FILL</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>GTD</td>
+    <td>AS</td>
+    <td>SELL</td>
+      <td>11-08-2016</td>
+  </tr>
+  <tr>
+     <td>A1001</td>
+       <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>POSB</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>EXP</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>GTC</td>
+    <td>ID</td>
+    <td>SELL</td>
+      <td>11-07-2016</td>
+  </tr>
+  <tr>
+  <td>A1001</td>
+    <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>OCBC</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>LIM</td>
+    <td>System</td>
+    <td>CXL</td>
+    <td>12231</td>
+    <td>sun</td>
+    <td>5</td>
+    <td>GTC</td>
+    <td>HK</td>
+    <td>BUY</td>
+      <td>11-06-2016</td>
+  </tr>
+  <tr>
+    <td>A1001</td>
+      <td>3201</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>RJCT</td>
+    <td>12231</td>
+    <td>trek</td>
+    <td>5</td>
+    <td>GTD</td>
+     <td>ID</td>
+     <td>SELL</td>
+       <td>11-05-2016</td>
+  </tr>
+  <tr>
+      <td>A1001</td>
+        <td>3201</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>FILL</td>
+    <td>12231</td>
+    <td>trek</td>
+    <td>5</td>
+    <td>GTC</td>
+    <td>HK</td>
+    <td>SELL</td>
+      <td>11-04-2016</td>
+  </tr>
+</table>
+</div>
+
+<!--<script type="text/javascript">
+    function clientFunction() {
+        var input, filter, table, tr, td, i,input1,filter1,td1,e;
+        input1 = document.getElementById("accountid");
+        filter = document.getElementById("clientid").value;
+        filter1 = input1.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td1 = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1 && td1.innerHTML.toUpperCase().indexOf(filter1) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>-->
+
+<script type="text/javascript">
+    function clientFunction() {
+      
+        var table, tr, i, column1, column4, column7, column11, column13, column14, account, instrument, accountfilter, clientfilter, timeforcefilter, ordertypefilter, exchangefilter, instrumentfilter, sidefilter,expiredfilter,filledfilter,rejectedfilter,cancelledfilter;
+        account = document.getElementById("accountid");
+        accountfilter = account.value.toUpperCase();
+        instrument = document.getElementById("instrumentid");
+        instrumentfilter = instrument.value.toUpperCase();
+
+        clientfilter = document.getElementById("clientid").value;
+        timeforcefilter = document.getElementById("timeforce").value;
+        ordertypefilter = document.getElementById("ordertype").value;
+        exchangefilter = document.getElementById("exchange").value;
+        exchangefilter = document.getElementById("exchange").value;
+        sidefilter = document.getElementById("side").value;
+        if (document.getElementById("expired").checked || document.getElementById("filled").checked || document.getElementById("rejected").checked || document.getElementById("cancelled").checked) {
+        if (document.getElementById("expired").checked) {
+            expiredfilter = document.getElementById("expired").value;
+        }
+        else {
+            expiredfilter = 1;
+        }
+        if (document.getElementById("filled").checked) {
+            filledfilter = document.getElementById("filled").value;
+        }
+        else {
+            filledfilter = 1;
+        }
+        if (document.getElementById("rejected").checked) {
+            rejectedfilter = document.getElementById("rejected").value;
+        }
+        else {
+            rejectedfilter = 1;
+        }
+        if (document.getElementById("cancelled").checked) {
+            cancelledfilter = document.getElementById("cancelled").value;
+        }
+        else {
+            cancelledfilter = 1;
+        }
+    }
+        else{
+        expiredfilter = "";
+
+    }
+     
+       
+
+           
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            column1 = tr[i].getElementsByTagName("td")[0];
+            column4 = tr[i].getElementsByTagName("td")[3];
+            column7 = tr[i].getElementsByTagName("td")[6];
+            column9 = tr[i].getElementsByTagName("td")[8];
+            column11 = tr[i].getElementsByTagName("td")[10];
+            column13 = tr[i].getElementsByTagName("td")[12];
+            column14 = tr[i].getElementsByTagName("td")[13];
+            column15 = tr[i].getElementsByTagName("td")[14];
+            column16 = tr[i].getElementsByTagName("td")[15];
+
+            if (column4) {
+                if (column4.innerHTML.toUpperCase().indexOf(clientfilter) > -1 && column1.innerHTML.toUpperCase().indexOf(accountfilter) > -1 && column13.innerHTML.toUpperCase().indexOf(timeforcefilter) > -1 && column7.innerHTML.toUpperCase().indexOf(ordertypefilter) > -1 && column14.innerHTML.toUpperCase().indexOf(exchangefilter) > -1 && column11.innerHTML.toUpperCase().indexOf(instrumentfilter) > -1 && DateCheck(column16.innerHTML) && column15.innerHTML.toUpperCase().indexOf(sidefilter) > -1 && (column9.innerHTML.toUpperCase().indexOf(expiredfilter) > -1 || column9.innerHTML.toUpperCase().indexOf(filledfilter) > -1 || column9.innerHTML.toUpperCase().indexOf(rejectedfilter) > -1 || column9.innerHTML.toUpperCase().indexOf(cancelledfilter) > -1)) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    function DateCheck(td) {
+
+       
+        var fromfilter, tofilter, from, to;
+        from = (document.getElementById("dt1").value).split("-");
+
+        fromfilter = new Date(from[2], from[1] - 1, from[0]);
+
+        to = (document.getElementById("dt2").value).split("-");
+
+        tofilter = new Date(to[2], to[1] - 1, to[0]);
+
+
+
+        var dateParts = td.split("-");
+        var date = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+
+
+
+
+        if (date.getTime() > fromfilter.getTime() && date.getTime() < tofilter.getTime()) {
+
+            return true;
+
+        }
+        else if (date.getTime() > fromfilter.getTime() || date.getTime() < tofilter.getTime()) {
+
+
+            return false;
+
+        }
+        else {
+            return 1;
+        }
+
+
+    }
+
+
+</script>
+</body>
+</html>

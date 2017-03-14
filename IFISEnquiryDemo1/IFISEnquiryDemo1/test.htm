@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script type="text/javascript">
+     $(document).ready(function () {
+         $("#dt1").datepicker({
+             dateFormat: "dd-mm-yy",
+             onSelect: function () {
+                 var dt2 = $('#dt2');
+                 var startDate = $(this).datepicker('getDate');
+                 //add 90 days to selected date
+                 startDate.setDate(startDate.getDate() + 90);
+                 var minDate = $(this).datepicker('getDate');
+                 //minDate of dt2 datepicker = dt1 selected day
+                 dt2.datepicker('setDate', minDate);
+                 //sets dt2 maxDate to the last day of 90 days window
+                 dt2.datepicker('option', 'maxDate', startDate);
+                 //first day which can be selected in dt2 is selected date in dt1
+                 dt2.datepicker('option', 'minDate', minDate);
+
+             }
+         });
+         $('#dt2').datepicker({
+             dateFormat: "dd-mm-yy"
+         });
+     });
+  </script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+
+<h2>My Customers</h2>
+
+<p>From Date: <input type="text" id="dt1"></p>
+<p>To Date: <input type="text" id="dt2"></p>
+<input type="button" onclick="ClientFunction()" value="filter" />
+<table id="myTable">
+  <tr class="header">
+    <th style="width:60%;">Name</th>
+    <th style="width:40%;">Country</th>
+  </tr>
+  <tr>
+    <td>11-11-2016</td>
+    
+  </tr>
+  <tr>
+<td>11-10-2016</td>
+  </tr>
+  <tr>
+   <td>11-09-2016</td>
+  </tr>
+  <tr>
+  <td>11-08-2016</td>
+  </tr>
+  <tr>
+    <td>11-07-2016</td>
+  </tr>
+  <tr>
+<td>11-06-2016</td>
+  </tr>
+  <tr>
+    <td>11-05-2016</td>
+  </tr>
+  <tr>
+  <td>11-04-2016</td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+    function ClientFunction() {
+        var table, tr, td, i;
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (DateCheck(td.innerHTML)) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+        
+    }
+</script>
+<script type="text/javascript">
+    function DateCheck(td) {
+
+        var fromfilter, tofilter, from,to;
+        from = (document.getElementById("dt1").value).split("-");
+
+        fromfilter = new Date(from[2], from[1] - 1, from[0]);
+
+        to = (document.getElementById("dt2").value).split("-");
+
+        tofilter = new Date(to[2], to[1] - 1, to[0]);
+     
+
+
+        var dateParts = td.split("-");
+        var date = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+       
+
+
+
+        if (date.getTime() > fromfilter.getTime() && date.getTime() < tofilter.getTime()) {
+       
+            return true;
+        }
+        else {
+
+           
+            return false;
+        }
+      
+    
+    }
+
+
+</script>
+
+</body>
+</html>
+
