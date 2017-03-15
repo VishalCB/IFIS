@@ -1,165 +1,292 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
- <script type="text/javascript">
-     $(document).ready(function () {
-         $("#dt1").datepicker({
-             dateFormat: "dd-mm-yy",
-             onSelect: function () {
-                 var dt2 = $('#dt2');
-                 var startDate = $(this).datepicker('getDate');
-                 //add 90 days to selected date
-                 startDate.setDate(startDate.getDate() + 90);
-                 var minDate = $(this).datepicker('getDate');
-                 //minDate of dt2 datepicker = dt1 selected day
-                 dt2.datepicker('setDate', minDate);
-                 //sets dt2 maxDate to the last day of 90 days window
-                 dt2.datepicker('option', 'maxDate', startDate);
-                 //first day which can be selected in dt2 is selected date in dt1
-                 dt2.datepicker('option', 'minDate', minDate);
-
-             }
-         });
-         $('#dt2').datepicker({
-             dateFormat: "dd-mm-yy"
-         });
-     });
-  </script>
 <style>
-* {
-  box-sizing: border-box;
-}
 
-#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
+h1{
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
 }
-
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 18px;
+table{
+  width:100%;
+  table-layout: fixed;
 }
-
-#myTable th, #myTable td {
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  padding: 20px 15px;
   text-align: left;
-  padding: 12px;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
 }
 
-#myTable tr {
-  border-bottom: 1px solid #ddd;
+
+/* demo styles */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
+section{
+  margin: 50px;
 }
 
-#myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
+
+/* follow me template */
+.made-with-love {
+  margin-top: 40px;
+  padding: 10px;
+  clear: left;
+  text-align: center;
+  font-size: 10px;
+  font-family: arial;
+  color: #fff;
 }
+.made-with-love i {
+  font-style: normal;
+  color: #F50057;
+  font-size: 14px;
+  position: relative;
+  top: 2px;
+}
+.made-with-love a {
+  color: #fff;
+  text-decoration: none;
+}
+.made-with-love a:hover {
+  text-decoration: underline;
+}
+
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
 </style>
+
+<script type="text/javascript">
+    // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+    $(window).on("load resize ", function () {
+        var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+        $('.tbl-header').css({ 'padding-right': scrollWidth });
+    }).resize();
+
+
+
+</script>
 </head>
 <body>
 
-<h2>My Customers</h2>
-
-<p>From Date: <input type="text" id="dt1"></p>
-<p>To Date: <input type="text" id="dt2"></p>
-<input type="button" onclick="ClientFunction()" value="filter" />
-<table id="myTable">
-  <tr class="header">
-    <th style="width:60%;">Name</th>
-    <th style="width:40%;">Country</th>
+<section>
+  <!--for demo wrap-->
+  <h1>Fixed Table header</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+         <th >Account</th>
+    <th >Trans ID</th>
+        <th >Deal Reference ID</th>
+            <th >Client ID</th>
+                <th >Trading Account#</th>
+                    <th >Order Owner</th>
+                      <th>Order Type</th>
+                        <th >Order Handler</th>
+                            <th >Status</th>
+                                    <th >Trace ID</th>
+                                        <th >Instrument</th>
+                                            <th >Instrument Code</th>
+                                              <th>Time in Force</th>
+                                                  <th>Exchange</th>
+                                                  <th>Side</th>
+                                                  <th>date</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+       <tr>
+    <td>01</td>
+    <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>LIM</td>
+    <td>System</td>
+    <td>EXP</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>DAY</td>
+    <td>KL</td>
+    <td>BUY</td>
+      <td>11-11-2016</td>
   </tr>
   <tr>
-    <td>11-11-2016</td>
-    
+     <td>A1002</td>
+       <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>LIM</td>
+    <td>System</td>
+    <td>CXL</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>DAY</td>
+    <td>BK</td>
+    <td>BUY</td>
+      <td>11-10-2016</td>
   </tr>
   <tr>
-<td>11-10-2016</td>
+      <td>A1002</td>
+        <td>3201</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>RJCT</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>GTC</td>
+    <td>SI</td>
+    <td>BUY</td>
+      <td>11-09-2016</td>
   </tr>
   <tr>
-   <td>11-09-2016</td>
+   <td>A1003</td>
+     <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>AVOL</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>FILL</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>GTD</td>
+    <td>AS</td>
+    <td>SELL</td>
+      <td>11-08-2016</td>
   </tr>
   <tr>
-  <td>11-08-2016</td>
+     <td>A1001</td>
+       <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>POSB</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>EXP</td>
+    <td>12231</td>
+    <td>star.SI</td>
+    <td>5</td>
+    <td>GTC</td>
+    <td>ID</td>
+    <td>SELL</td>
+      <td>11-07-2016</td>
   </tr>
   <tr>
-    <td>11-07-2016</td>
+  <td>A1001</td>
+    <td>3200</td>
+    <td>DB170106.0001</td>
+    <td>OCBC</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>LIM</td>
+    <td>System</td>
+    <td>CXL</td>
+    <td>12231</td>
+    <td>sun</td>
+    <td>5</td>
+    <td>GTC</td>
+    <td>HK</td>
+    <td>BUY</td>
+      <td>11-06-2016</td>
   </tr>
   <tr>
-<td>11-06-2016</td>
+    <td>A1001</td>
+      <td>3201</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>RJCT</td>
+    <td>12231</td>
+    <td>trek</td>
+    <td>5</td>
+    <td>GTD</td>
+     <td>ID</td>
+     <td>SELL</td>
+       <td>11-05-2016</td>
   </tr>
   <tr>
-    <td>11-05-2016</td>
+      <td>A1001</td>
+        <td>3201</td>
+    <td>DB170106.0001</td>
+    <td>DB_SG</td>
+    <td>77777</td>
+    <td>IO</td>
+    <td>MKT</td>
+    <td>System</td>
+    <td>FILL</td>
+    <td>12231</td>
+    <td>trek</td>
+    <td>5</td>
+    <td>GTC</td>
+    <td>HK</td>
+    <td>SELL</td>
+      <td>11-04-2016</td>
   </tr>
-  <tr>
-  <td>11-04-2016</td>
-  </tr>
-</table>
-
-<script type="text/javascript">
-    function ClientFunction() {
-        var table, tr, td, i;
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                if (DateCheck(td.innerHTML)) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-        
-    }
-</script>
-<script type="text/javascript">
-    function DateCheck(td) {
-
-        var fromfilter, tofilter, from,to;
-        from = (document.getElementById("dt1").value).split("-");
-
-        fromfilter = new Date(from[2], from[1] - 1, from[0]);
-
-        to = (document.getElementById("dt2").value).split("-");
-
-        tofilter = new Date(to[2], to[1] - 1, to[0]);
-     
-
-
-        var dateParts = td.split("-");
-        var date = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
-       
-
-
-
-        if (date.getTime() > fromfilter.getTime() && date.getTime() < tofilter.getTime()) {
-       
-            return true;
-        }
-        else {
-
-           
-            return false;
-        }
-      
-    
-    }
-
-
-</script>
-
+      </tbody>
+    </table>
+  </div>
+</section>
 </body>
 </html>
 
